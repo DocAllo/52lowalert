@@ -2,21 +2,26 @@ const sp500Tickers = ['A', 'AAL', 'AAPL', 'ABBV', 'ABNB', 'ABT', 'ACGL', 'ACN', 
 
 function fetchStockData(ticker) {
     return new Promise((resolve, reject) => {
-        // Fetch stock data from Yahoo Finance
-        // Here, we mock the data fetching process
-        const mockData = {
-            currentPrice: 100,
-            low52Week: 90,
-            trend: 'Up',
-            analystTargetPrice: 110,
-            recommendations: {
-                strongBuy: 10,
-                buy: 20,
-                hold: 5,
-                sell: 1
-            }
-        };
-        resolve(mockData);
+        const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const quote = data.quoteResponse.result[0];
+                const mockData = {
+                    currentPrice: quote.regularMarketPrice,
+                    low52Week: quote.fiftyTwoWeekLow,
+                    trend: quote.regularMarketChangePercent > 0 ? 'Up' : 'Down',
+                    analystTargetPrice: quote.targetMeanPrice || 'N/A',
+                    recommendations: {
+                        strongBuy: Math.floor(Math.random() * 10), // Mock data
+                        buy: Math.floor(Math.random() * 10),       // Mock data
+                        hold: Math.floor(Math.random() * 10),      // Mock data
+                        sell: Math.floor(Math.random() * 10)       // Mock data
+                    }
+                };
+                resolve(mockData);
+            })
+            .catch(error => reject(error));
     });
 }
 
@@ -46,4 +51,5 @@ function updateStockTable() {
 
 // Update the stock table every 5 minutes
 setInterval(updateStockTable, 300000);
+updateStockTable();
 updateStockTable();
