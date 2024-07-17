@@ -4,34 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ticker Data</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Ticker Data</h1>
-  <table id="tickerTable">
-    <tr>
-      <th>Ticker</th>
-      <th>Current Price</th>
-      <th>Analyst Target Price</th>
-      <th>Analyst Target % Change</th>
-      <th>Moving Average Slope</th>
-      <th>Analyst Recommendation Score</th>
-      <th>First Appeared</th>
-    </tr>
-  </table>
+  <header>
+    <h1>Ticker Data</h1>
+  </header>
+  <main>
+    <table id="tickerTable">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Current Price</th>
+          <th>Analyst Target Price</th>
+          <th>Analyst Target % Change</th>
+          <th>Moving Average Slope</th>
+          <th>Analyst Recommendation Score</th>
+          <th>First Appeared</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 데이터가 여기 추가됩니다. -->
+      </tbody>
+    </table>
+  </main>
   <script src="scripts.js"></script>
 </body>
 </html>
