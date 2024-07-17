@@ -1,19 +1,31 @@
-import axios from 'axios';
-
-export async function getMovingAverageSlope(ticker) {
-  try {
-    const response = await axios.get(`https://api.example.com/ticker/${ticker}/moving_average_slope`);
-    return response.data.slope;
-  } catch (error) {
-    console.error(`Error fetching moving average slope for ${ticker}:`, error);
-    return null;
+export function getMovingAverageSlope(historicalData) {
+  if (!historicalData || historicalData.length < 2) {
+    return 0;
   }
+
+  const prices = historicalData.map(data => data.close);
+  const x = Array.from({ length: prices.length }, (_, i) => i);
+  const n = prices.length;
+
+  const sumX = x.reduce((a, b) => a + b, 0);
+  const sumY = prices.reduce((a, b) => a + b, 0);
+  const sumXY = x.reduce((sum, xi, i) => sum + xi * prices[i], 0);
+  const sumX2 = x.reduce((sum, xi) => sum + xi * xi, 0);
+
+  const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+  
+  return slope;
 }
 
 export async function getAnalystData(ticker) {
   try {
-    const response = await axios.get(`https://api.example.com/ticker/${ticker}/analyst`);
-    return response.data;
+    const recommendationTrend = await yahooFinance.recommendationsBySymbol(ticker);
+    const analystData = {
+      recommendationMean: recommendationTrend.recommendationMean,
+      targetMeanPrice: recommendationTrend.targetMeanPrice,
+      numberOfAnalystOpinions: recommendationTrend.numberOfAnalystOpinions
+    };
+    return analystData;
   } catch (error) {
     console.error(`Error fetching analyst data for ${ticker}:`, error);
     return null;
