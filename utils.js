@@ -19,7 +19,7 @@ export function getMovingAverageSlope(historicalData) {
 
 export async function getAnalystData(ticker) {
   try {
-    const recommendationTrend = await yahooFinance.recommendationsBySymbol(ticker);
+    const recommendationTrend = await window.yahooFinance.recommendationsBySymbol(ticker);
     const analystData = {
       recommendationMean: recommendationTrend.recommendationMean,
       targetMeanPrice: recommendationTrend.targetMeanPrice,
