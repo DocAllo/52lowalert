@@ -22,10 +22,21 @@ async function getTickerData(ticker) {
     return null;
   }
 }
-
 async function fetchAndDisplayData() {
   const tableBody = document.querySelector('#tickerTable tbody');
   const currentTime = new Date().toLocaleString();
+  
+  console.log("Current time:", currentTime);  // 추가된 로그
+  
+  const lastUpdateElement = document.getElementById('lastUpdate');
+  console.log("Last update element:", lastUpdateElement);  // 추가된 로그
+  
+  if (lastUpdateElement) {
+    lastUpdateElement.textContent = currentTime;
+    console.log("Last update time set");  // 추가된 로그
+  } else {
+    console.error("Could not find lastUpdate element");  // 추가된 로그
+  }
   document.getElementById('lastUpdate').textContent = currentTime;
 
   tableBody.innerHTML = ''; // Clear existing table data
