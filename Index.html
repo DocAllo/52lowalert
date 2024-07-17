@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ticker Data</title>
+  <title>S&P 500 Ticker Analysis</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Ticker Data</h1>
+    <h1>S&P 500 Ticker Analysis</h1>
   </header>
   <main>
+    <section class="description">
+      <p>This table shows S&P 500 stocks that are currently trading at or below 5% above their 52-week low. Data is sourced from Yahoo Finance.</p>
+      <p>
+        <strong>Legend:</strong><br>
+        <span class="highlight-red">Red</span>: Current price is at 52-week low<br>
+        <span class="highlight-orange">Orange</span>: Current price is within 5% of 52-week low
+      </p>
+    </section>
     <table id="tickerTable">
       <thead>
         <tr>
@@ -20,14 +28,17 @@
           <th>Analyst Target % Change</th>
           <th>Moving Average Slope</th>
           <th>Analyst Recommendation Score</th>
-          <th>First Appeared</th>
+          <th>Last Updated</th>
         </tr>
       </thead>
       <tbody>
-        <!-- 데이터가 여기 추가됩니다. -->
+        <!-- Data will be added here dynamically -->
       </tbody>
     </table>
   </main>
-  <script src="scripts.js"></script>
+  <footer>
+    <p>Data refreshes automatically. Last update: <span id="lastUpdate"></span></p>
+  </footer>
+  <script type="module" src="scripts.js"></script>
 </body>
 </html>
