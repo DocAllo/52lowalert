@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&P 500 Stock Monitor</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticker Data</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>S&P 500 Stock Monitor</h1>
-        <table id="stockTable">
-            <thead>
-                <tr>
-                    <th>Ticker</th>
-                    <th>52-Week Low</th>
-                    <th>Trend</th>
-                    <th>Analyst Target Price</th>
-                    <th>Analyst Recommendations</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- JavaScript will populate this table -->
-            </tbody>
-        </table>
-    </div>
-    <script src="scripts.js"></script>
+  <h1>Ticker Data</h1>
+  <table id="tickerTable">
+    <tr>
+      <th>Ticker</th>
+      <th>Current Price</th>
+      <th>Analyst Target Price</th>
+      <th>Analyst Target % Change</th>
+      <th>Moving Average Slope</th>
+      <th>Analyst Recommendation Score</th>
+      <th>First Appeared</th>
+    </tr>
+  </table>
+  <script src="scripts.js"></script>
 </body>
 </html>
